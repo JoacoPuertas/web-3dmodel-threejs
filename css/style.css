@@ -1,24 +1,242 @@
-body {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  background-color: #000;
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
 }
 
-header {
-  margin-top: 3em;
+canvas {
+  display: block;
+}
+
+body {
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  margin: 0;
+  overflow: hidden;
+  font-weight: lighter;
+}
+
+#hover-image-1,
+#hover-image-2,
+#hover-image-3 {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Modal de bienvenida */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Asegurarse que está sobre todo */
+  transition: opacity 0.7s ease; /* Agrega transición a la opacidad */
+
+}
+
+
+/* Estilo del modal oculto con transición */
+.modal.fade-out {
+  opacity: 0; /* Haz que el modal se vuelva transparente */
+}
+
+.modal-content {
   text-align: center;
   color: white;
 }
 
-header h1 {
-  font-size: 2em;
-  font-weight: 900;
+.modal-content button {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  background-color: rgba(0, 0, 0);
+  color: white;
+  border-color: white;
 }
 
-#container3D canvas {
-  width: 100vw !important;
-  height: 100vh !important;
-  position: absolute;
+.modal-content button:hover {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-color: white;
+}
+
+/* Contenedor del texto animado */
+#text-container {
+  display: block; /* Asegura que el contenedor ajuste al tamaño del texto */
+  margin: 0 auto;
+  position: relative;
+  margin: 50px;
+  min-height: 90px;
+  min-width: 700px;
+  max-width: 700px;
+  background-color: white;
+  border: 3px solid white; /* Se añade 'solid' para definir el estilo del borde */
+}
+
+/* /* styles.css */
+#texto-animado {
+  position: relative; /* Necesario para el posicionamiento del pseudo-elemento */
+  margin: 2% 2%;
+  font-size: 24px;
+  overflow: hidden; /* Esconde el texto que aún no se ha mostrado */
+  padding-right: 30px; /* Asegúrate de que el padding sea suficiente para el cursor */
+  font-family: "Jersey 10", sans-serif;
+  color: black;
+}
+
+/* Cursor personalizado */
+#texto-animado::after {
+  content: "_"; /* Contenido del cursor personalizado */
+  position: absolute; /* Posiciona el cursor dentro del contenedor */
+  right: 0; /* Alinea el cursor al borde derecho del contenedor */
+  top: 0; /* Alinea el cursor en la parte superior */
+  color: white; /* Color del cursor */
+  font-size: 24px; /* Tamaño del cursor */
+  animation: blinkCursor 0.8s step-start infinite; /* Aplica la animación */
+}
+
+/* Definición de la animación del cursor */
+@keyframes blinkCursor {
+  0%,
+  100% {
+    opacity: 1; /* Visible */
+  }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+}
+
+.blink {
+  animation: blinkText 1s infinite;
+}
+
+@keyframes blinkText {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Modal de imagen */
+#image-modal {
+  position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro con transparencia */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000; /* Asegurarse de que esté sobre todo */
+}
+
+#image-modal .modal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#image-modal img {
+  max-width: 90%;
+  max-height: 80%;
+  width: 90vw;
+}
+
+#image-modal button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  background-color: rgba(0, 0, 0);
+  color: white;
+  border: 3px solid white; /* Se añade 'solid' para definir el estilo del borde */
+}
+#next-image-button {
+  background-color: rgb(255, 253, 253) !important;
+  color: rgb(0, 0, 0) !important;
+  margin-bottom: 30px;
+  border: 3px solid black; /* Se añade 'solid' para definir el estilo del borde */
+}
+
+#next-image-button:hover {
+  background-color: rgb(0, 0, 0) !important;
+  color: rgb(255, 255, 255) !important;
+  margin-bottom: 30px;
+  border: 3px solid white; /* Se añade 'solid' para definir el estilo del borde */
+}
+
+#image-modal button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+/* Contenedor del botón y los créditos */
+.credits-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+/* Botón de créditos */
+.credits-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  background-color: rgba(0, 0, 0);
+  color: white;
+  border: 3px solid white;
+}
+
+.credits-button:hover {
+  z-index: 50;
+  right: 20px;
+}
+
+/* Contenedor de los créditos, inicialmente oculto */
+.credits-content {
+  text-align: center;
+  display: none;
+  margin-top: 0px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Jersey 10", sans-serif;
+  font-size: large;
+  letter-spacing: 5px;
+  background-color: rgba(0, 0, 0);
+  color: white;
+  border: 3px solid white;
+}
+
+/* Mostrar los créditos al hacer hover sobre el botón */
+.credits-container:hover .credits-content {
+  display: block;
+  z-index: 100;
 }

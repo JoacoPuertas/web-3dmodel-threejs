@@ -1,23 +1,82 @@
-<!--
-  EYE FREE MODEL 3D BY Oscar creativo by OSCAR CREATIVO is licensed under Creative Commons Attribution.
-  Juvenile Teratophoneus curriei byrankinstudio is licensed under Creative Commons Attribution.
--->
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>A simple Three.JS App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infografía</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
-      <h1>A simple three.js app</h1>
-    </header>
+    <div
+      id="info-box"
+      style="
+        display: none;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px;
+      "
+    >
+      <h1>Título</h1>
+      <p>Información relacionada con el botón seleccionado.</p>
+    </div>
 
-    <main>
-      <div id="container3D"></div>
-    </main>
+    <div id="hover-image-1">
+      <img src="assets/nucleo1.png" alt="" />
+    </div>
+    <div id="hover-image-2">
+      <img src="assets/nucleo2.png" alt="" />
+    </div>
+    <div id="hover-image-3">
+      <img src="assets/nucleo3.png" alt="" />
+    </div>
 
-    <script type="module" src="js/main.js"></script>
+    <!-- Modal de bienvenida -->
+    <div id="welcome-modal" class="modal">
+      <div class="modal-content">
+        <div id="text-container">
+          <div id="texto-animado"></div>
+        </div>
+        <button id="enter-button">Generar</button>
+      </div>
+    </div>
+
+    <!-- Modal adicional -->
+    <div id="image-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <button id="next-image-button">Regenerar prompt</button>
+
+        <img
+          id="modal-image"
+          src="assets/prompt_1.png"
+          alt="Descripción de la imagen"
+        />
+        <button id="close-modal-button">Cerrar</button>
+      </div>
+    </div>
+
+    <img
+      id="overlay-image"
+      src="assets/nucleo1.png"
+      alt="Descripción de la imagen"
+      style="display: none"
+    />
+    
+    <div class="credits-container">
+      <button class="credits-button">Créditos</button>
+      <div class="credits-content">
+        <p>
+          Fermín Milito<br />
+          Candelaria Villarreal<br />
+          Joaquín Puertas<br />
+          Mateo Díaz<br /><br />
+          TDMM2 - FDA UNLP
+        </p>
+      </div>
+    </div>
+    
+    <script src="js/main.js" type="module"></script>
   </body>
 </html>
